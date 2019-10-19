@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}Update Poll{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'question_view' question.pk %}">View</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Update Poll</h1>
+    <form method="POST" action="{% url 'question_update' question.pk %}">
+        {% include 'partial/question_form.html' with button_text="Update" %}
+    </form>
+{% endblock %}

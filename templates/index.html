@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    <li><a href="{% url 'question_add' %}">Add poll</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Polls</h1>
+    <hr/>
+    {% for question in questions %}
+        <div class="container card mb-3">
+            <div class="row">
+                <div class="col">
+                   <h2 class="card-title">{{ question.poll }} </h2>
+                    <p class="card-text"><div class="pre">{{ question.pub_date }}</div></p>
+                </div>
+                <div class="via col-6">
+                    <p><a href="{% url 'question_view' question.pk %}">View</a></p>
+                </div>
+            </div>
+        </div>
+        <hr/>
+    {% endfor %}
+{% endblock %}

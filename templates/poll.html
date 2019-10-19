@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block poll %}{{ question.poll}}{% endblock %}
+{% block menu %}
+    <li><a href="{% url 'question_update' question.pk %}">Edit</a></li>
+    <li><a href="{% url 'question_delete' question.pk %}">Delete</a></li>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="card mb-3">
+            <h2 class="card-title">{{ question.poll }} </h2>
+            <p class="card-text"><div class="pre">{{ question.pub_date }}</div></p>
+        </div>
+        <div class="col">
+       {{ choice.choice_text }}
+        </div>
+    </div>
+{% endblock %}
+
+
